@@ -4,24 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waiting List Form</title>
+    <title>Public Speaking Waitlist</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #f4f4f9;
+            background-color: #f9f9fb;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .content {
+        .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin: 0;
+        }
+
+        .content {
+            text-align: left;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        ul li {
+            margin-bottom: 8px;
         }
 
         .form-container {
@@ -29,34 +59,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        h1 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            margin: 15px 0;
-        }
-
-        p {
-            font-size: 1em;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        ul {
             text-align: left;
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        ul li {
-            margin-bottom: 8px;
         }
 
         label {
@@ -83,41 +86,60 @@
             border-radius: 4px;
             font-size: 1em;
             cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
         button:hover {
             background-color: #0056b3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            font-size: 0.9em;
         }
     </style>
 </head>
 
 <body>
-    <div class="content">
-        <h1>Public Speaking for Software Engineers</h1>
-        <p>An upcoming course designed to help engineers handle anxiety and speak confidently in meetings, standups,
-            and technical presentations.</p>
-        <p>Join the waitlist to get early access when the course launches.</p>
-        <h2>This course is for software engineers who want to:</h2>
-        <ul>
-            <li>Speak confidently in meetings</li>
-            <li>Explain technical ideas clearly</li>
-            <li>Reduce anxiety when presenting</li>
-        </ul>
-        <p>Designed by a software engineer with a decade of industry experience, experience in top-tier tech companies,
-            and an active Toastmasters member.</p>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Public Speaking for Software Engineers</h1>
+        </div>
 
-    <div class="form-container">
-        <h1>Join the Waiting List</h1>
-        <form id="waitingListForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+        <div class="content">
+            <p>An upcoming course designed to help engineers handle anxiety and speak confidently in meetings, standups,
+                and technical presentations.</p>
+            <p>Join the waitlist to get early access when the course launches.</p>
+            <h2>This course is for software engineers who want to:</h2>
+            <ul>
+                <li>Speak confidently in meetings</li>
+                <li>Explain technical ideas clearly</li>
+                <li>Reduce anxiety when presenting</li>
+            </ul>
+            <p>Designed by a software engineer with a decade of industry experience, experience in top-tier tech companies,
+                and an active Toastmasters member.</p>
+        </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+        <div class="form-container">
+            <h2>Join the Waiting List</h2>
+            <form id="waitingListForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
 
-            <button type="submit">Join Now</button>
-        </form>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+                <button type="submit">Join Now</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Public Speaking for Software Engineers. All Rights Reserved.</p>
+        </div>
     </div>
 
     <script>

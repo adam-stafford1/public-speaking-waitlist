@@ -161,12 +161,26 @@
         const form = document.getElementById('waitingListForm');
         const messageDiv = document.getElementById('message');
         const submitBtn = document.getElementById('submitBtn');
+        const submittedEmails = new Set();
+
+        // Load previously submitted emails from localStorage
+        const storedEmails = localStorage.getItem('submittedEmails');
+        if (storedEmails) {
+            JSON.parse(storedEmails).forEach(email => submittedEmails.add(email));
+        }
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const name = form.name.value;
             const email = form.email.value;
+
+            // Check if email has already been submitted locally
+            if (submittedEmails.has(email)) {
+                messageDiv.textContent = 'This email has already been submitted.';
+                messageDiv.className = 'message error';
+                return;
+            }
 
             // Disable button and show loading state
             submitBtn.disabled = true;
@@ -185,6 +199,12 @@
                 const result = await response.json();
 
                 if (result.status === 'success') {
+                    // Add email to submitted set
+                    submittedEmails.add(email);
+
+                    // Save to localStorage for persistence
+                    localStorage.setItem('submittedEmails', JSON.stringify(Array.from(submittedEmails)));
+
                     // Show success message
                     messageDiv.textContent = `Thank you, ${name}! You have been added to the waiting list.`;
                     messageDiv.className = 'message success';
@@ -201,7 +221,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                messageDiv.textContent = 'There was an error submitting the form. Please try again.';
+                messageDiv.textContent = error.message || 'There was an error submitting the form. Please try again.';
                 messageDiv.className = 'message error';
                 submitBtn.textContent = 'Join Now';
                 submitBtn.disabled = false;
